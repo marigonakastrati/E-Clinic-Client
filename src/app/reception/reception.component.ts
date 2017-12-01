@@ -17,27 +17,20 @@ import { clone } from 'lodash';
 export class ReceptionComponent implements OnInit {
 
   values: Country[];
-  isLoading = true;
   countryForm: boolean = false;
-  editCountryForm:boolean=false;
+  editCountryForm: boolean = false;
   isNewForm: boolean;
   newCountry: any = {};
-  editedCountry: any ={};
+  editedCountry: any = {};
 
   constructor(private _receptionService: ReceptionService) {
 
   }
 
   ngOnInit() {
+    this.initializeCountryList();
 
-    this._receptionService.getReceptionList().subscribe
-      (
-      data => {
-        this.isLoading = false;
-        this.values = data
-      }
-      )
-    /*this._http.get('http://localhost:26194/Health-care-Maven/resource/address/addressList').
+    /*this._http.get('http://localhost:26194/Eclinic/resource/address/addressList').
     toPromise().
     then(r => r.json()).
     then(r=> this.values = r); */
@@ -45,7 +38,10 @@ export class ReceptionComponent implements OnInit {
 
   deleteCountry(value): void {
     console.log(value)
-    this._receptionService.deleteReceptionist(value);
+    this._receptionService.deleteReceptionist(value).subscribe
+      (
+      r => this.initializeCountryList()
+      );
   }
 
   addPost(name): void {
@@ -65,24 +61,28 @@ export class ReceptionComponent implements OnInit {
 
   showAddCountryForm() {
     // resets form if edited product
-    if(this.values.length) {
+    if (this.values.length) {
       this.newCountry = {};
     }
     this.countryForm = true;
     this.isNewForm = true;
   }
+
   saveCountry(country: Country) {
-    console.log(country.name+" component");
-    if(this.isNewForm) {
-      // add a new product
-      this._receptionService.postReception(country.name);
+    if (this.isNewForm) {
+      this._receptionService.postReception(country.name).subscribe(
+        r => {
+          this.initializeCountryList();
+        }
+      );
     }
     this.countryForm = false;
   }
 
-  
   updateCountry() {
-    this._receptionService.updateReceptionist(this.editedCountry);
+    this._receptionService.updateReceptionist(this.editedCountry).subscribe(
+      r => this.initializeCountryList()
+    );
     this.editCountryForm = false;
     this.editedCountry = {};
   }
@@ -97,4 +97,13 @@ export class ReceptionComponent implements OnInit {
     this.editCountryForm = false;
   }
 
+  initializeCountryList() {
+
+    this._receptionService.getReceptionList().subscribe
+      (
+      data => {
+        this.values = data
+      }
+      )
+  }
 }
