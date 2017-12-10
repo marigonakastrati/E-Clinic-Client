@@ -22,6 +22,7 @@ export class ReceptionComponent implements OnInit {
   isNewForm: boolean;
   newCountry: any = {};
   editedCountry: any = {};
+  username= "Nam";
 
   constructor(private _receptionService: ReceptionService) {
 
