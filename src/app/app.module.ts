@@ -1,23 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {HttpModule} from '@angular/http'
-import {FormsModule} from "@angular/forms";
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { ReceptionComponent } from './reception/reception.component';
-import { AdministratorComponent } from './administrator/administrator.component';
-import { UserComponent } from './user/user.component';
-import { ClinicManagerComponent } from './clinic-manager/clinic-manager.component';
+import { AdministratorComponent } from './admin-clinic/administrator.component';
+import { ClinicManagerComponent } from './hr-manager/hr-manager.component';
 import { DoctorComponent } from './doctor/doctor.component';
-import { LoginComponent } from './reception/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { ReceptionService } from './reception/reception.service';
-
+import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from './login/login.service';
+import { NurseComponent } from './nurse/nurse.component';
 const appRouters: Routes = [
-    {path:'', component:UserComponent},
-    {path:'reception', component:ReceptionComponent},
-    {path:'administrator', component:AdministratorComponent},
-    {path:'login', component:LoginComponent}
+  { path: 'reception', component: ReceptionComponent },
+  { path: 'adminClinic', component: AdministratorComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'doctor', component: DoctorComponent },
+  { path: 'hrManager', component: ClinicManagerComponent },
+  { path: 'nurse', component: NurseComponent }
 ];
 
 @NgModule({
@@ -25,18 +27,18 @@ const appRouters: Routes = [
     AppComponent,
     ReceptionComponent,
     AdministratorComponent,
-    UserComponent,
     ClinicManagerComponent,
     DoctorComponent,
-    LoginComponent
+    LoginComponent,
+    NurseComponent
   ],
   imports: [
-    HttpModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRouters)
-  ],    
-  providers: [ReceptionService],
+  ],
+  providers: [ReceptionService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

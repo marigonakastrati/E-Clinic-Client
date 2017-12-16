@@ -1,24 +1,26 @@
-import { Http } from '@angular/http';
+import { RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Country } from './country';
-
+import { Headers } from '@angular/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable()
 export class ReceptionService {
-    constructor(private _http: Http) {
+    constructor(private _http: HttpClient) {
 
     }
 
     getReceptionList() {
+        let headers = new HttpHeaders().set('Authorization', 'auth-token');
         return this._http
-            .get('http://localhost:15940/E-Clinic/api/country/find')
-            .map(r => r.json());
+            .get<Country[]>('http://localhost:15940/E-Clinic/api/country/find', { headers })
+        //.map(r => r.json());
     }
 
     postReception(name) {
         return this._http.post('http://localhost:15940/E-Clinic/api/country/create',
             {
-                countryName: name
+                countryName: name,
             })
     }
 

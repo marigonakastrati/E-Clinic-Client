@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-clinic-manager',
-  templateUrl: './clinic-manager.component.html',
-  styleUrls: ['./clinic-manager.component.css']
+  selector: 'app-hr-manager',
+  templateUrl: './hr-manager.component.html',
+  styleUrls: ['./hr-manager.component.css']
 })
 export class ClinicManagerComponent implements OnInit {
 

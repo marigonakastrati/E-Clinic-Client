@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise'
 import { forEach } from '@angular/router/src/utils/collection';
@@ -22,7 +22,8 @@ export class ReceptionComponent implements OnInit {
   isNewForm: boolean;
   newCountry: any = {};
   editedCountry: any = {};
-  username= "Nam";
+  private username: string;
+  private password: string;
 
   constructor(private _receptionService: ReceptionService) {
 
@@ -35,6 +36,7 @@ export class ReceptionComponent implements OnInit {
     toPromise().
     then(r => r.json()).
     then(r=> this.values = r); */
+    this.username = localStorage.getItem("username");
   }
 
   deleteCountry(value): void {
