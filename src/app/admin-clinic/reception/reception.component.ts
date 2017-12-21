@@ -14,7 +14,7 @@ import { clone } from 'lodash';
   styleUrls: ['./reception.component.css'],
   providers: [ReceptionService]
 })
-export class ReceptionComponent implements OnInit {
+export class ACReceptionComponent implements OnInit {
 
   values: Country[];
   countryForm: boolean = false;
