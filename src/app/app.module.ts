@@ -23,7 +23,8 @@ import { ACDoctorComponent } from './admin-clinic/doctor/doctor.component';
 import { ACHRManagerComponent } from './admin-clinic/hr-manager/hr-manager.component';
 import { ACNurseComponent } from './admin-clinic/nurse/nurse.component';
 import { ACReceptionComponent } from './admin-clinic/reception/reception.component';
-
+import { ProfileService } from './admin-clinic/profile/profile.service';
+import {Global} from './global';
 
 
 const appRouters: Routes = [
@@ -68,7 +69,7 @@ const appRouters: Routes = [
     FormsModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [ReceptionService, LoginService,
+  providers: [ReceptionService, LoginService,ProfileService,Global,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,
