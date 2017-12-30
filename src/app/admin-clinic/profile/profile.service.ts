@@ -28,8 +28,6 @@ export class ProfileService {
     )
 }
 updateAdminClinicPassword(adminClinic: AdminClinic) {
-  console.log(adminClinic.confirmPassword)
-  console.log(adminClinic.newPassword+'- '+ adminClinic.currentPassword)
   return this._http.put(this._global.uriApi+'adminClinic/updatePassword/',
       {
         id: adminClinic.id,
