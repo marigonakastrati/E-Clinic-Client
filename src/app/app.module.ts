@@ -18,13 +18,16 @@ import { ClinicHttpInterceptor } from './clinic.interceptor';
 import { ACProfileComponent } from './admin-clinic/profile/profile.component';
 import { ACPharmacistComponent } from './admin-clinic/pharmacist/pharmacist.component';
 import { ACPharmacyManagerComponent } from './admin-clinic/pharmacy-manager/pharmacy-manager.component';
-import { ACClinicManagerComponent } from './admin-clinic/clinic-manager/clinic-manager.component';
+import { ACEditClinicManagerComponent } from './admin-clinic/clinic-manager/edit/clinic-manager.component';
+import { ACAddClinicManagerComponent } from './admin-clinic/clinic-manager/add/clinic-manager.component';
 import { ACDoctorComponent } from './admin-clinic/doctor/doctor.component';
 import { ACHRManagerComponent } from './admin-clinic/hr-manager/hr-manager.component';
 import { ACNurseComponent } from './admin-clinic/nurse/nurse.component';
 import { ACReceptionComponent } from './admin-clinic/reception/reception.component';
 import { ProfileService } from './admin-clinic/profile/profile.service';
 import {Global} from './global';
+import { ClinicManagerService } from './admin-clinic/clinic-manager/clinic-manager.service';
+import { DoctorService } from './admin-clinic/doctor/doctor.service';
 
 
 const appRouters: Routes = [
@@ -36,7 +39,8 @@ const appRouters: Routes = [
   { path: 'hrManager', component: ClinicManagerComponent },
   { path: 'nurse', component: NurseComponent },
   { path: 'adminClinic/profile', component: ACProfileComponent },
-  { path: 'adminClinic/clinicmanager', component: ACClinicManagerComponent },
+  { path: 'adminClinic/clinicmanager/edit', component: ACEditClinicManagerComponent },
+  { path: 'adminClinic/clinicmanager/add', component: ACAddClinicManagerComponent },
   { path: 'adminClinic/doctor', component: ACDoctorComponent },
   { path: 'adminClinic/nurse', component: ACNurseComponent },
   { path: 'adminClinic/hrManager', component: ACHRManagerComponent },
@@ -57,7 +61,8 @@ const appRouters: Routes = [
     ACProfileComponent,
     ACPharmacistComponent,
     ACPharmacyManagerComponent,
-    ACClinicManagerComponent,
+    ACAddClinicManagerComponent,
+    ACEditClinicManagerComponent,
     ACDoctorComponent,
     ACHRManagerComponent,
     ACNurseComponent,
@@ -69,7 +74,7 @@ const appRouters: Routes = [
     FormsModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [ReceptionService, LoginService,ProfileService,Global,
+  providers: [ReceptionService, LoginService,ProfileService,Global,ClinicManagerService,DoctorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,

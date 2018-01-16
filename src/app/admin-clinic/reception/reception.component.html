@@ -1,69 +1,102 @@
-<h1>Reception Component</h1>
-<div class="container">
-    <div class="col-md-12">
+<ul>
+  <li>
+    <a routerLink="/adminClinic">Home</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/profile">Profile</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/clinicmanager">Clinic Manager</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/doctor">Doctor</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/nurse">Nurse</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/hrManager">Hr Manager</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/pharmacist">Pharmacist</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/pharmacyManager">Pharmacy Manager</a>
+  </li>
+  <li>
+    <a routerLink="/adminClinic/receptionist">Receptionist</a>
+  </li>
+  <li>
+    <a routerLink="/logout">Logout</a>
+  </li>
+</ul>
+<br>
 
-        <br/>
-        <h1>Address</h1>
-        <table class="table table-bordered">
-            <tr>
-                <th>Id</th>
-                <th>Country Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            <tr *ngFor="let value of values ">
-                <td>{{value.id}}</td>
-                <td>{{value.name}}</td>
-                <td>
-                    <!--<a [routerLink]="['/add', value.id]">
-                        <i class="glyphicon glyphicon-edit"></i>
-                    </a>-->
-                    <a>
-                        <i (click)="showEditCountryForm(value)" class="glyphicon glyphicon-edit"></i>
-                    </a>
-                </td>
-                <td>
-                    <a>
-                        <i (click)="deleteCountry(value)" class="glyphicon glyphicon-remove"></i>
-                    </a>
-                </td>
-            </tr>
-        </table>
-        <!--<form id = "add-address">
-    <input type="text"[(ngModel)]="id" name = "id"/>
-    <input type="text" [(ngModel)]="name" name = "name"/>
-    <button (click)= "addPost(name)">Add Address</button>
+<div class="container">
+<div class="col-md-12">
+
+  <br/>
+  <h1>Address</h1>
+  <table class="table table-bordered">
+      <tr>
+          <th>Id</th>
+          <th>Country Name</th>
+          <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+      <tr *ngFor="let value of values ">
+          <td>{{value.id}}</td>
+          <td>{{value.name}}</td>
+          <td>
+              <!--<a [routerLink]="['/add', value.id]">
+                  <i class="glyphicon glyphicon-edit"></i>
+              </a>-->
+              <a>
+                  <i (click)="showEditCountryForm(value)" class="glyphicon glyphicon-edit"></i>
+              </a>
+          </td>
+          <td>
+              <a>
+                  <i (click)="deleteCountry(value)" class="glyphicon glyphicon-remove"></i>
+              </a>
+          </td>
+      </tr>
+  </table>
+  <!--<form id = "add-address">
+<input type="text"[(ngModel)]="id" name = "id"/>
+<input type="text" [(ngModel)]="name" name = "name"/>
+<button (click)= "addPost(name)">Add Address</button>
 </form>-->
-        <button class="btn btn-success" (click)="showAddCountryForm()">Add Country
-            <i class="fa fa-plus"></i>
-        </button>
-        <br />
-        <br />
-        <form *ngIf="countryForm">
-            <h2>Add New Country</h2>
-            <p>ID:
-                <input type="text" name="id" [(ngModel)]="newCountry.id" />
-            </p>
-            <p>Name:
-                <input type="text" name="name" [(ngModel)]="newCountry.name" />
-            </p>
-            <p>
-                <button type="button" class="btn btn-primary" (click)="saveCountry(newCountry)">Submit</button>
-                <button type="button" class="btn btn-warning" (click)="cancelNewCountry()">Cancel</button>
-            </p>
-        </form>
-        <form *ngIf="editCountryForm">
-            <h2>Edit Country</h2>
-            <p>ID:
-                <input type="text" name="id" [(ngModel)]="editedCountry.id" />
-            </p>
-            <p>Name:
-                <input type="text" name="name" [(ngModel)]="editedCountry.name" />
-            </p>
-            <p>
-                <button type="button" class="btn btn-primary" (click)="updateCountry(editedCountry)">Submit</button>
-                <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
-            </p>
-        </form>
-    </div>
+  <button class="btn btn-success" (click)="showAddCountryForm()">Add Country
+      <i class="fa fa-plus"></i>
+  </button>
+  <br />
+  <br />
+  <form *ngIf="countryForm">
+      <h2>Add New Country</h2>
+      <p>ID:
+          <input type="text" name="id" [(ngModel)]="newCountry.id" />
+      </p>
+      <p>Name:
+          <input type="text" name="name" [(ngModel)]="newCountry.name" />
+      </p>
+      <p>
+          <button type="button" class="btn btn-primary" (click)="saveCountry(newCountry)">Submit</button>
+          <button type="button" class="btn btn-warning" (click)="cancelNewCountry()">Cancel</button>
+      </p>
+  </form>
+  <form *ngIf="editCountryForm">
+      <h2>Edit Country</h2>
+      <p>ID:
+          <input type="text" name="id" [(ngModel)]="editedCountry.id" />
+      </p>
+      <p>Name:
+          <input type="text" name="name" [(ngModel)]="editedCountry.name" />
+      </p>
+      <p>
+          <button type="button" class="btn btn-primary" (click)="updateCountry(editedCountry)">Submit</button>
+          <button type="button" class="btn btn-warning" (click)="cancelEdits()">Cancel</button>
+      </p>
+  </form>
+</div>
 </div>

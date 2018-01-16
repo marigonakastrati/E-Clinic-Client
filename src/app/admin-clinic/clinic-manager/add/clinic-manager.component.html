@@ -1,0 +1,426 @@
+<section>
+    <!-- BEGIN SIDEBAR -->
+    <div class="sidebar">
+      <div class="logopanel">
+        <h1>
+          <a href="adminClinic/"></a>
+        </h1>
+      </div>
+      <div class="sidebar-inner">
+        <ul class="nav nav-sidebar">
+          <li>
+            <a href="adminClinic/">
+              <i class="icon-home"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-parent nav-active active">
+            <a href="#">
+              <i class="icon-bulb"></i>
+              <span>Clinic Manager</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li class="active">
+                <a href="adminClinic/clinicmanager/add "> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/clinicmanager/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent ">
+            <a href="">
+              <i class="icon-screen-desktop"></i>
+              <span>Doctor</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/doctor/add"> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/doctor/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent">
+            <a href="">
+              <i class="icon-layers"></i>
+              <span>Nurse</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/nurse/add"> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/nurse/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent">
+            <a href="">
+              <i class="icon-note"></i>
+              <span>H&R Manager </span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/hrManager/add">
+                  <span class="pull-right badge badge-danger">new</span>
+                  <span>Add</span>
+                </a>
+              </li>
+              <li>
+                <a href="adminClinic/hrManager/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent">
+            <a href="">
+              <i class="fa fa-table"></i>
+              <span>Pharmacist</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/pharmacist/add"> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/pharmacist/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent">
+            <a href="">
+              <i class="icon-bar-chart"></i>
+              <span>Pharmacy Manager </span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/pharmacyManager/add"> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/pharmacyManager/edit"> Edit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-parent">
+            <a href="">
+              <i class="icon-picture"></i>
+              <span>Receptionist</span>
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="children collapse">
+              <li>
+                <a href="adminClinic/receptionist/add"> Add</a>
+              </li>
+              <li>
+                <a href="adminClinic/receptionist/edit">
+                  <span class="pull-right badge badge-primary">12</span> Edit</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END SIDEBAR -->
+    <div class="main-content">
+      <!-- BEGIN TOPBAR -->
+      <div class="topbar">
+        <div class="header-left">
+          <div class="topnav">
+            <a class="menutoggle" href="#" data-toggle="sidebar-collapsed">
+              <span class="menu__handle">
+                <span>Menu</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="header-right">
+          <ul class="header-menu nav navbar-nav">
+            <!-- BEGIN USER DROPDOWN -->
+            <li class="dropdown" id="language-header">
+              <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <i class="icon-globe"></i>
+                <span>Language</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#" data-lang="en">
+                    <img src="../../../assets/global/images/flags/usa.png" alt="flag-english">
+                    <span>English</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" data-lang="fr">
+                    <img src="../../../assets/global/images/flags/french.png" alt="flag-english">
+                    <span>Français</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- END USER DROPDOWN -->
+  
+            <!-- BEGIN USER DROPDOWN -->
+            <li class="dropdown" id="user-header">
+              <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
+                <span class="username">aa</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="adminClinic/profile">
+                    <i class="icon-user"></i>
+                    <span>My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a (click)="logOut()">
+                    <i class="icon-logout"></i>
+                    <span>Logout</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- END USER DROPDOWN -->
+          </ul>
+        </div>
+        <!-- header-right -->
+      </div>
+      <!-- END TOPBAR -->
+      <!-- BEGIN PAGE CONTENT -->
+      <div class="page-content">
+        <div class="header">
+          <h2>Add
+            <strong>Clinic Manager</strong>
+          </h2>
+          <div class="breadcrumb-wrapper">
+            <ol class="breadcrumb">
+              <li>
+                <a href="/adminClinic">Home</a>
+              </li>
+              <li>
+                <a href="/adminClinic/clinicmanager">Clinic Manager</a>
+              </li>
+              <li class="active">Add</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="panel-content">
+            <div class="col-lg-12 portlets">
+              <div class="panel panel-default no-bd">
+                <div class="panel-header bg-dark">
+                  <h2 class="panel-title">
+                    <strong>Add</strong> Clinic Manager</h2>
+                </div>
+                <div class="panel-content bg-white">
+                  <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                      <form class="form-validation" novalidate name="editForm">
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">First Name
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="firstname" [(ngModel)]="editedValue.firstname" class="form-control" ng-required="true" minlength="6">
+                                <div id="firstnameError" hidden>
+                                  <small style="color:red; display:block"> Enter your first name</small>
+                                </div>
+                                <i class="icon-user"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Last Name
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="lastname" [(ngModel)]="editedValue.lastname" class="form-control" ng-required="true" minlength="5">
+                                <div id="lastnameError" hidden>
+                                  <small style="color:red; display:block"> Enter your last name</small>
+                                </div>
+                                <i class="icon-user"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Gender
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="gender" ng-model="genderList">
+                                  <option *ngFor="let option of genderList " value="{{option.value}}" [selected]="editedValue.genderId == option.id">{{option.value}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Martial Status
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="martialStatus" ng-model="martialStatusList">
+                                  <option *ngFor="let option of martialStatusList " value="{{option.name}}" [selected]="editedValue.martialStatusId == option.id">{{option.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Birth City
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="birthCity" ng-model="birthCityList">
+                                  <option *ngFor="let option of birthCityList " value="{{option.name}}" [selected]="editedValue.birthCityId == option.id">{{option.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Religion
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="religion" ng-model="religionList">
+                                  <option *ngFor="let option of religionList " value="{{option.name}}" [selected]="editedValue.religionId == option.id">{{option.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Street Name
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="addressName" [(ngModel)]="editedValue.addressName" class="form-control" ng-required="true">
+                                <div id="streetnameError" hidden>
+                                  <small style="color:red; display:block"> Enter street name</small>
+                                </div>
+                                <i class="icon-user"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">City
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="city" ng-model="cityList">
+                                  <option *ngFor="let option of cityList " value="{{option.name}}" [selected]="editedValue.cityId == option.id">{{option.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Building Number
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="buildingNumber" [(ngModel)]="editedValue.buildingNumber" class="form-control" ng-required="true">
+                                <div id="buldingnumberError" hidden>
+                                  <small style="color:red; display:block"> Enter building number</small>
+                                </div>
+                                <i class="icon-user"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Country
+                              </label>
+                              <div class="append-icon">
+                                <select class="form-control" id="country" ng-model="countryList">
+                                  <option *ngFor="let option of countryList " value="{{option.name}}" [selected]="editedValue.countryId == option.id">{{option.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Password
+                              </label>
+                              <div class="append-icon">
+                                <input type="password" name="password" [(ngModel)]="editedValue.currentPassword" class="form-control" ng-required="true">
+                                <div id="passwordError" hidden>
+                                  <small style="color:red; display:block"> Enter your password</small>
+                                </div>
+                                <i class="icon-eye"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Email
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="email" [(ngModel)]="editedValue.email" class="form-control" required="true">
+  
+                                <div id="emailError" hidden>
+                                  <small style="color:red; display:block"> Enter your email address</small>
+                                </div>
+                                <i class="icon-bag"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-center  m-t-20">
+                          <button type="button" (click)="save(editedValue)" class="btn btn-embossed btn-primary m-r-20" >Submit</button>
+                          <button type="button" (click)="cancelEdits()" class="cancel btn btn-embossed btn-default m-b-10 m-r-0">Clear</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="copyright">
+            <p class="pull-left sm-pull-reset">
+              <span>Copyright
+                <span class="copyright">©</span> 2018 </span>
+              <span>Owner</span>.
+              <span>All rights reserved. </span>
+            </p>
+            <p class="pull-right sm-pull-reset">
+              <span>
+                <a href="#" class="m-r-10"></a>
+                <a href="#" class="m-l-10 m-r-10"></a>
+                <a href="#" class="m-l-10"></a>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- END PAGE CONTENT -->
+    </div>
+    <!-- END MAIN CONTENT -->
+  </section>
+  <!-- BEGIN PRELOADER -->
+  <div class="loader-overlay">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <!-- END PRELOADER -->
+  <a href="#" class="scrollup">
+    <i class="fa fa-angle-up"></i>
+  </a>

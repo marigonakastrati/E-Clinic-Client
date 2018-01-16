@@ -13,8 +13,12 @@ export class ACProfileComponent implements OnInit {
   constructor(private _profileService: ProfileService) { }
 
   ngOnInit() {
-    this.initializeFields();
-    //If user is not logged in redirect to login page
+    if (localStorage.getItem('role') != null) {
+      this.initializeFields();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
   }
 
   initializeFields() {
