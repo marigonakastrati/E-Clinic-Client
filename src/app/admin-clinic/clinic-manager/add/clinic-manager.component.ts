@@ -90,12 +90,13 @@ export class ACAddClinicManagerComponent implements OnInit {
     this.editedValue.religion = religionTag.value;
     this.editedValue.city = cityTag.value;
     this.editedValue.country = countryTag.value;
+    console.log(editedValue.dateOfBirth)
 
     if (!this.validate()) {
       this._clinicManagerService.create(this.editedValue).subscribe(
         r => this.initializeList()
       );
-      //this.editedValue = {};
+      this.editedValue = {};
     }
   }
 
@@ -205,13 +206,9 @@ export class ACAddClinicManagerComponent implements OnInit {
     var buildingNumber: string = this.editedValue.buildingNumber;
     var password: string = this.editedValue.currentPassword;
     var email: string = this.editedValue.email;
-
-    this.getElementById("firstnameError").setAttribute("hidden", "true");
-    this.getElementById("lastnameError").setAttribute("hidden", "true");
-    this.getElementById("streetnameError").setAttribute("hidden", "true");
-    this.getElementById("buldingnumberError").setAttribute("hidden", "true");
-    this.getElementById("passwordError").setAttribute("hidden", "true");
-    this.getElementById("emailError").setAttribute("hidden", "true");
+    var dateOfBirth: string = this.editedValue.dateOfBirth;
+    var personId: string = this.editedValue.id;
+    this.clearErrorId();
 
     if (firstName == null || firstName.length < 6) {
       validationFailed = true;
@@ -237,6 +234,16 @@ export class ACAddClinicManagerComponent implements OnInit {
       validationFailed = true;
       this.getElementById("emailError").removeAttribute('hidden');
     }
+    if (personId == null || personId.length < 6) {
+      validationFailed = true;
+      this.getElementById("personalIdError").removeAttribute('hidden');
+    }
+    let dateoB = new Date(dateOfBirth);
+    let dnow = new Date();
+    if (dateOfBirth == null || Math.abs((dnow.getFullYear() - dateoB.getFullYear())) < 18) {
+      validationFailed = true;
+      this.getElementById("dateOfBirthError").removeAttribute('hidden');
+    }
     return validationFailed;
   }
 
@@ -247,6 +254,8 @@ export class ACAddClinicManagerComponent implements OnInit {
     this.getElementById("buldingnumberError").setAttribute("hidden", "true");
     this.getElementById("passwordError").setAttribute("hidden", "true");
     this.getElementById("emailError").setAttribute("hidden", "true");
+    this.getElementById("personalIdError").setAttribute("hidden", "true");
+    this.getElementById("dateOfBirthError").setAttribute("hidden", "true");
   }
   getElementById(id) {
     return document.getElementById(id) as HTMLSelectElement;
