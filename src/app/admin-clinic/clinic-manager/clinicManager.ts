@@ -20,4 +20,5 @@ export interface ClinicManager {
     city: string;
     email: string;
     buildingNumber: string;
+    dateOfBirth:Date;
 }

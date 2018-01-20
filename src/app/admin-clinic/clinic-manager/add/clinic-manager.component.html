@@ -168,7 +168,7 @@
             <li class="dropdown" id="user-header">
               <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                 <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
-                <span class="username">aa</span>
+                <span class="username">{{adminClinicProfile.firstname}}</span>
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -245,6 +245,34 @@
                                   <small style="color:red; display:block"> Enter your last name</small>
                                 </div>
                                 <i class="icon-user"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Personal Id
+                              </label>
+                              <div class="append-icon">
+                                <input type="text" name="id" [(ngModel)]="editedValue.id" class="form-control" ng-required="true" >
+                                <div id="personalIdError" hidden>
+                                  <small style="color:red; display:block"> Enter your personal id</small>
+                                </div>
+                                <i class="icon-bag"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label class="control-label">Date of birth
+                              </label>
+                              <div class="append-icon">
+                                <input type="date" name="dateOfBirth" [(ngModel)]="editedValue.dateOfBirth" class="form-control" id="dateInput" required="true">
+  
+                                <div id="dateOfBirthError" hidden>
+                                  <small style="color:red; display:block"> Enter your birthday</small>
+                                </div>
                               </div>
                             </div>
                           </div>

@@ -36,6 +36,7 @@ export class ClinicManagerService {
     }
 
     create(clinicManager: ClinicManager) {
+        console.log(clinicManager.dateOfBirth+" service")
         return this._http.post(this._global.uriApi + 'clinicManager/create',
             {
                 religion: clinicManager.religion,
@@ -49,7 +50,9 @@ export class ClinicManagerService {
                 country: clinicManager.country,
                 email: clinicManager.email,
                 password: clinicManager.currentPassword,
-                buildingNumber: clinicManager.buildingNumber
+                buildingNumber: clinicManager.buildingNumber,
+                id:clinicManager.id,
+                dateOfBirth:clinicManager.dateOfBirth
 
 
             },
