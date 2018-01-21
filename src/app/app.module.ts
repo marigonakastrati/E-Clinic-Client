@@ -37,6 +37,11 @@ import { PatientProfileService } from './patient/profile/profile.service';
 import { PatientPrescriptionService } from './patient/prescription/prescription.service';
 import { PatientAppointmentService } from './patient/appointment/appointment.service';
 import { PatientService } from './patient/patient.service';
+import { ACAddDoctorComponent } from './admin-clinic/doctor/add/doctor.component';
+import { ACEditDoctorComponent } from './admin-clinic/doctor/edit/doctor.component';
+import { ACAddNurseComponent } from './admin-clinic/nurse/add/nurse.component';
+import { ACEditNurseComponent } from './admin-clinic/nurse/edit/nurse.component';
+import { NurseService } from './admin-clinic/nurse/nurse.service';
 
 
 
@@ -53,7 +58,11 @@ const appRouters: Routes = [
   { path: 'adminClinic/clinicmanager/edit', component: ACEditClinicManagerComponent },
   { path: 'adminClinic/clinicmanager/add', component: ACAddClinicManagerComponent },
   { path: 'adminClinic/doctor', component: ACDoctorComponent },
+  { path: 'adminClinic/doctor/add', component: ACAddDoctorComponent },
+  { path: 'adminClinic/doctor/edit', component: ACEditDoctorComponent },
   { path: 'adminClinic/nurse', component: ACNurseComponent },
+  { path: 'adminClinic/nurse/add', component: ACAddNurseComponent },
+  { path: 'adminClinic/nurse/edit', component: ACEditNurseComponent },
   { path: 'adminClinic/hrManager', component: ACHRManagerComponent },
   { path: 'adminClinic/pharmacist', component: ACPharmacistComponent },
   { path: 'adminClinic/pharmacyManager', component: ACPharmacyManagerComponent },
@@ -84,7 +93,12 @@ const appRouters: Routes = [
     PatientAppointmentComponent,
     PatientPrescriptionComponent,
     PatientProfileComponent,
-    PatientComponent
+    PatientComponent,
+    ACAddDoctorComponent,
+    ACEditDoctorComponent,
+    ACAddNurseComponent,
+    ACEditNurseComponent
+
   ],
   imports: [
     HttpClientModule,
@@ -93,7 +107,7 @@ const appRouters: Routes = [
     RouterModule.forRoot(appRouters)
   ],
   providers: [ReceptionService, LoginService, ProfileService, Global, ClinicManagerService, DoctorService, AdministratorService,
-    PatientProfileService,PatientPrescriptionService,PatientAppointmentService,PatientService,
+    PatientProfileService,PatientPrescriptionService,PatientAppointmentService,PatientService,NurseService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,
