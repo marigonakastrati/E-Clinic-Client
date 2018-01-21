@@ -34,8 +34,6 @@ import { PatientAppointmentComponent } from './patient/appointment/appointment.c
 import { PatientPrescriptionComponent } from './patient/prescription/prescription.component';
 import { PatientProfileComponent } from './patient/profile/profile.component';
 import { PatientProfileService } from './patient/profile/profile.service';
-import { PatientPrescriptionService } from './patient/prescription/prescription.service';
-import { PatientAppointmentService } from './patient/appointment/appointment.service';
 import { PatientService } from './patient/patient.service';
 import { ACAddDoctorComponent } from './admin-clinic/doctor/add/doctor.component';
 import { ACEditDoctorComponent } from './admin-clinic/doctor/edit/doctor.component';
@@ -107,7 +105,7 @@ const appRouters: Routes = [
     RouterModule.forRoot(appRouters)
   ],
   providers: [ReceptionService, LoginService, ProfileService, Global, ClinicManagerService, DoctorService, AdministratorService,
-    PatientProfileService,PatientPrescriptionService,PatientAppointmentService,PatientService,NurseService,
+    PatientProfileService,PatientService,NurseService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,

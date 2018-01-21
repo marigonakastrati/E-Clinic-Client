@@ -15,14 +15,14 @@
           </a>
         </li>
         <li class="nav-parent nav-active active">
-          <a >
+          <a>
             <i class="icon-bulb"></i>
             <span>Appointment</span>
           </a>
           <ul class="children collapse">
             <li class="active">
-              <a href="patient/appointment/"> Add</a>
-            </li> 
+              <a href="patient/appointment/"> Book</a>
+            </li>
           </ul>
         </li>
         <li class="nav-parent ">
@@ -33,7 +33,7 @@
           <ul class="children collapse">
             <li>
               <a href="patient/prescription/"> View</a>
-            </li> 
+            </li>
           </ul>
         </li>
       </ul>
@@ -62,7 +62,7 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a  data-lang="en">
+                <a data-lang="en">
                   <img src="../../../assets/global/images/flags/usa.png" alt="flag-english">
                   <span>English</span>
                 </a>
@@ -91,7 +91,7 @@
                 </a>
               </li>
               <li>
-                <a (click)="logOut()" >
+                <a (click)="logOut()">
                   <i class="icon-logout"></i>
                   <span>Logout</span>
                 </a>
@@ -130,149 +130,29 @@
                 <i class="fa fa-table"></i>
                 <strong>Appointment</strong> List</h3>
             </div>
-            <div class="panel-content">
-              <div class="col-md-6" *ngIf="editForm">
-                <div class="panel panel-default no-bd">
-                  <div class="panel-header bg-dark">
-                    <h2 class="panel-title">
-                      <strong>Book</strong>Appintment</h2>
-                  </div>
-                  <div class="panel-content bg-white">
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                        <form *ngIf="editForm" class="form-validation" novalidate="novalidate" name="editForm">
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Id
-                                </label>
-                                <div class="append-icon">
-                                  <input type="text" name="id" [(ngModel)]="editedValue.id" class="form-control" ng-required="true" readonly>
-                                  <i class="icon-key"></i>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Name
-                                </label>
-                                <div class="append-icon">
-                                  <input type="text" name="name" [(ngModel)]="editedValue.firstname" class="form-control" ng-required="true" minlength="5">
-                                  <div *ngIf="editedValue.firstname.length<5">
-                                    <small style="color:red; display:block"> Enter your first name</small>
-                                 </div>
-                                  <i class="icon-user"></i>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Gender
-                                </label>
-                                <div class="append-icon">
-                                  <select class="form-control" id="gender" ng-model="genderList">
-                                    <option *ngFor="let option of genderList " value="{{option.value}}" [selected]="editedValue.genderId == option.id">{{option.value}}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Martial Status
-                                </label>
-                                <div class="append-icon">
-                                  <select class="form-control" id="martialStatus" ng-model="martialStatusList">
-                                    <option *ngFor="let option of martialStatusList " value="{{option.name}}" [selected]="editedValue.martialStatusId == option.id">{{option.name}}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Birth City
-                                </label>
-                                <div class="append-icon">
-                                  <select class="form-control" id="birthCity" ng-model="birthCityList">
-                                    <option *ngFor="let option of birthCityList " value="{{option.name}}" [selected]="editedValue.birthCityId == option.id">{{option.name}}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Religion
-                                </label>
-                                <div class="append-icon">
-                                  <select class="form-control" id="religion" ng-model="religionList">
-                                    <option *ngFor="let option of religionList " value="{{option.name}}" [selected]="editedValue.religionId == option.id">{{option.name}}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">Street Name
-                                </label>
-                                <div class="append-icon">
-                                  <input type="text" name="addressName" [(ngModel)]="editedValue.addressName" class="form-control"ng-required="true">
-                                  <div *ngIf="editedValue.addressName.length<5">
-                                      <small style="color:red; display:block"> Enter your address</small>
-                                   </div>
-                                  <i class="icon-user"></i>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                <label class="control-label">City
-                                </label>
-                                <div class="append-icon">
-                                  <select class="form-control" id="city" ng-model="cityList">
-                                    <option *ngFor="let option of cityList " value="{{option.name}}" [selected]="editedValue.cityId == option.id">{{option.name}}</option>
-                                  </select>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="text-center  m-t-20">
-                            <button type="button" (click)="update(editedValue)" class="btn btn-embossed btn-primary m-r-20" [disabled]="editedValue.addressName.length<5 || editedValue.firstname.length<5">Submit</button>
-                            <button type="button" (click)="cancelEdits()" class="cancel btn btn-embossed btn-default m-b-10 m-r-0" >Cancel</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="panel-content"> 
               <table class="table table-hover dataTable" id="table-editable">
                 <thead>
                   <tr>
-                    <th>Id</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th class="text-right">Action</th>
-                    <th></th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let value of values ">
-                    <td>{{value.id}}</td>
-                    <td>{{value.firstname}}</td>
-                    <td>{{value.lastname}}</td>
-                    <td class="text-right">
-                      <a class="edit btn btn-sm btn-default">
-                        <i class="icon-note" (click)="showEditForm(value)"></i>
-                      </a>
-                    </td>
+                    <td>{{value.firstName}}</td>
+                    <td>{{value.dateStart}}</td>
+                    <td>{{value.timeStart}}</td>
+                    <td>{{value.timeEnd}}</td>
+                    <td>{{value.status}}</td>
                     <td class="text-left">
-                      <a class="delete btn btn-sm btn-danger" (click)="deleteStatus(value)">
-                        <i class="icons-office-52"></i>
+                      <a class="btn btn-success" (click)="book(value)">
+                        <i class="icons-office-51"></i>
+                        Book
                       </a>
                     </td>
                   </tr>
@@ -285,15 +165,15 @@
       <div class="footer">
         <div class="copyright">
           <p class="pull-left sm-pull-reset">
-            <span>Copyright 
+            <span>Copyright
               <span class="copyright">©</span> 2018 </span>
             <span>Owner</span>.
             <span>All rights reserved. </span>
           </p>
           <p class="pull-right sm-pull-reset">
             <span>
-              <a href="#" class="m-r-10"></a> 
-              <a href="#" class="m-l-10 m-r-10"></a> 
+              <a href="#" class="m-r-10"></a>
+              <a href="#" class="m-l-10 m-r-10"></a>
               <a href="#" class="m-l-10"></a>
             </span>
           </p>
