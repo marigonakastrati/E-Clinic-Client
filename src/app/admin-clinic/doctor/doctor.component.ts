@@ -52,7 +52,7 @@ export class ACDoctorComponent implements OnInit {
 
   save(doctor: Doctor) {
     if (this.isNewForm) {
-      this._doctorService.create(doctor.firstname).subscribe(
+      this._doctorService.create(doctor).subscribe(
         r => {
           this.initializeList();
         }
