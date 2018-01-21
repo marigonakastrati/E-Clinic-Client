@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from './profile.service';
+import { PatientProfileService } from './profile.service';
 import { LoginService } from '../../login/login.service';
 import { Router } from '@angular/router';
 
@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ACProfileComponent implements OnInit {
+export class PatientProfileComponent implements OnInit {
 
   currentProfile: any = {};
   adminClinicProfile: any;
-
-  constructor(private _profileService: ProfileService, private _loginService:LoginService,
+  constructor(private _profileService: PatientProfileService, private _loginService: LoginService,
     private router: Router) { }
 
   ngOnInit() {
@@ -35,17 +34,16 @@ export class ACProfileComponent implements OnInit {
       }
     )
   }
-
   //update the profile. TODO send notification to UI with status using observable 
   saveProfile() {
 
-    this._profileService.updateAdminClinicName(this.currentProfile).subscribe(
+    this._profileService.updateEntityName(this.currentProfile).subscribe(
       data => {
         this.initializeFields();
       });
 
     if (!this.validatePassword()) {
-      this._profileService.updateAdminClinicPassword(this.currentProfile).subscribe(
+      this._profileService.updateEntityPassword(this.currentProfile).subscribe(
         data => {
           console.log("password edit");
           this.initializeFields();
@@ -85,6 +83,7 @@ export class ACProfileComponent implements OnInit {
       this.getElementById("confirmPasswordError").removeAttribute('hidden');
     }
   }
+
   getProfile() {
     var id = localStorage.getItem('username');
     console.log(id)
@@ -96,8 +95,7 @@ export class ACProfileComponent implements OnInit {
   getElementById(id) {
     return document.getElementById(id) as HTMLSelectElement;
   }
-  logOut()
-  {
+  logOut() {
     this._loginService.logOut();
     this.router.navigate(['login']);
   }

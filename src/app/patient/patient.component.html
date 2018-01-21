@@ -3,124 +3,37 @@
   <div class="sidebar">
     <div class="logopanel">
       <h1>
-        <a href="adminClinic/"></a>
+        <a href="patient/"></a>
       </h1>
     </div>
     <div class="sidebar-inner">
       <ul class="nav nav-sidebar">
         <li>
-          <a href="adminClinic/">
+          <a href="patient/">
             <i class="icon-home"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-parent">
-          <a>
+        <li class="nav-parent ">
+          <a >
             <i class="icon-bulb"></i>
-            <span>Clinic Manager</span>
-            <span class="fa arrow"></span>
+            <span>Appointment</span>
           </a>
           <ul class="children collapse">
-            <li>
-              <a href="adminClinic/clinicmanager/add "> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/clinicmanager/edit"> Edit</a>
-            </li>
+            <li >
+              <a href="patient/appointment/"> Add</a>
+            </li> 
           </ul>
         </li>
         <li class="nav-parent ">
           <a>
             <i class="icon-screen-desktop"></i>
-            <span>Doctor</span>
-            <span class="fa arrow"></span>
+            <span>Prescription</span>
           </a>
           <ul class="children collapse">
-            <li>
-              <a href="adminClinic/doctor/add"> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/doctor/edit"> Edit</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent">
-          <a>
-            <i class="icon-layers"></i>
-            <span>Nurse</span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="children collapse">
-            <li>
-              <a href="adminClinic/nurse/add"> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/nurse/edit"> Edit</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent">
-          <a>
-            <i class="icon-note"></i>
-            <span>H&R Manager </span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="children collapse">
-            <li>
-              <a href="adminClinic/hrManager/add">
-                <span class="pull-right badge badge-danger">new</span>
-                <span>Add</span>
-              </a>
-            </li>
-            <li>
-              <a href="adminClinic/hrManager/edit"> Edit</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent">
-          <a>
-            <i class="fa fa-table"></i>
-            <span>Pharmacist</span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="children collapse">
-            <li>
-              <a href="adminClinic/pharmacist/add"> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/pharmacist/edit"> Edit</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent">
-          <a>
-            <i class="icon-bar-chart"></i>
-            <span>Pharmacy Manager </span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="children collapse">
-            <li>
-              <a href="adminClinic/pharmacyManager/add"> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/pharmacyManager/edit"> Edit</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent">
-          <a>
-            <i class="icon-picture"></i>
-            <span>Receptionist</span>
-            <span class="fa arrow"></span>
-          </a>
-          <ul class="children collapse">
-            <li>
-              <a href="adminClinic/receptionist/add"> Add</a>
-            </li>
-            <li>
-              <a href="adminClinic/receptionist/edit">
-                <span class="pull-right badge badge-primary">12</span> Edit</a>
-            </li>
+            <li >
+              <a href="patient/prescription/"> View</a>
+            </li> 
           </ul>
         </li>
       </ul>
@@ -168,11 +81,11 @@
           <li class="dropdown" id="user-header">
             <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
               <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
-              <span class="username">{{adminClinicProfile.firstname}}</span>
+              <span class="username">{{patientProfile.firstname}}</span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="adminClinic/profile">
+                <a href="patient/profile">
                   <i class="icon-user"></i>
                   <span>My Profile</span>
                 </a>

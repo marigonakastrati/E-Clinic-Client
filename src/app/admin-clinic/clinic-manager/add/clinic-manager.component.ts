@@ -96,6 +96,12 @@ export class ACAddClinicManagerComponent implements OnInit {
       this._clinicManagerService.create(this.editedValue).subscribe(
         r => this.initializeList()
       );
+      let divMessage = this.getElementById("saveMessage");
+    divMessage.removeAttribute('hidden');
+    //fade the message away after 10 seconds
+    setTimeout(function () {
+      divMessage.setAttribute("hidden", "true");
+    }, 5000);
       this.editedValue = {};
     }
   }
@@ -210,11 +216,11 @@ export class ACAddClinicManagerComponent implements OnInit {
     var personId: string = this.editedValue.id;
     this.clearErrorId();
 
-    if (firstName == null || firstName.length < 6) {
+    if (firstName == null || firstName.length < 2) {
       validationFailed = true;
       this.getElementById("firstnameError").removeAttribute('hidden');
     }
-    if (lastName == null || lastName.length < 6) {
+    if (lastName == null || lastName.length < 2) {
       validationFailed = true;
       this.getElementById("lastnameError").removeAttribute('hidden');
     }
