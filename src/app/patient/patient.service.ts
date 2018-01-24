@@ -10,6 +10,8 @@ import { Religion } from './religion';
 import { Address } from './address';
 import { Country } from './country';
 import { Schedule } from './schedule';
+import { PrescriptionMedicine } from './prescription/prescription';
+import { PatientPrescription } from './prescription/patientPrescription';
 
 @Injectable()
 export class PatientService {
@@ -106,5 +108,16 @@ export class PatientService {
         responseType: 'text'
       }
     )
+  }
+  getPrescibedMedicineList(id, visitId)
+  {
+    return this._http
+      .get<PrescriptionMedicine[]>(this._global.uriApi + 'prescription/find/'+1+"/"+visitId) 
+  }
+
+  getPrescriptionbyVisitList(id)
+  {
+    return this._http
+      .get<PatientPrescription[]>(this._global.uriApi + 'prescription/findByVisit/'+1) 
   }
 }
