@@ -3,36 +3,25 @@
   <div class="sidebar">
     <div class="logopanel">
       <h1>
-        <a href="patient/"></a>
+        <a href="reception/"></a>
       </h1>
     </div>
     <div class="sidebar-inner">
       <ul class="nav nav-sidebar">
         <li>
-          <a href="patient/">
+          <a href="reception/">
             <i class="icon-home"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <li class="nav-parent ">
+        <li class="nav-parent nav-active active">
           <a>
             <i class="icon-bulb"></i>
             <span>Appointment</span>
           </a>
           <ul class="children collapse">
-            <li>
-              <a href="patient/appointment/"> Book</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-parent nav-active active ">
-          <a>
-            <i class="icon-screen-desktop"></i>
-            <span>Prescription</span>
-          </a>
-          <ul class="children collapse">
             <li class="active">
-              <a href="patient/prescription/"> View</a>
+              <a href="reception/appointment/"> Book</a>
             </li>
           </ul>
         </li>
@@ -81,11 +70,11 @@
           <li class="dropdown" id="user-header">
             <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
               <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
-              <span class="username">{{patientProfile.firstname}}</span>
+              <span class="username">{{receptionistProfile.firstname}}</span>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="patient/profile">
+                <a href="reception/profile">
                   <i class="icon-user"></i>
                   <span>My Profile</span>
                 </a>
@@ -108,15 +97,15 @@
     <div class="page-content">
       <div class="header">
         <h2>View
-          <strong>Prescription</strong>
+          <strong>Appointments</strong>
         </h2>
         <div class="breadcrumb-wrapper">
           <ol class="breadcrumb">
             <li>
-              <a href="/patient">Home</a>
+              <a href="/recetion">Home</a>
             </li>
             <li>
-              <a href="/patient/prescription">Prescription</a>
+              <a href="/recetion/appointment">Appointment</a>
             </li>
             <li class="active">View</li>
           </ol>
@@ -128,71 +117,31 @@
             <div class="panel-header panel-controls">
               <h3>
                 <i class="fa fa-table"></i>
-                <strong>Prescription</strong> List</h3>
+                <strong>Appointment</strong> List</h3>
             </div>
-            <div class="panel-content">
-              <div class="col-md-6" *ngIf="editForm">
-                <div class="panel panel-default no-bd">
-                  <div class="panel-header bg-dark">
-                    <h2 class="panel-title">
-                      <strong>Prescription</strong>List</h2>
-                  </div>
-                  <div class="panel-content bg-white">
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                        <table class="table table-hover dataTable" id="table-editable">
-                          <thead>
-                            <tr>
-                              <th>Description</th>
-                              <th>Days to use</th>
-                              <th>Times per day</th>
-                              <th>Medicine name</th>
-                              <th>Medicine weight</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr *ngFor="let value of editedValue ">
-                              <td>{{value.comment}}</td>
-                              <td>{{value.DaysToUse}}</td>
-                              <td>{{value.times_per_day}}</td>
-                              <td>{{value.medicine_name}}</td>
-                              <td>{{value.weight}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <div class="form-group">
-                          <label for="comment">Diagnoses:</label>
-                          <textarea class="form-control" rows="5" id="comment">{{editedValue[0].description}}</textarea>
-                        </div>
-                        <div class="text-center  m-t-20">
-                          <button type="button" (click)="update(editedValue)" class="btn btn-embossed btn-primary m-r-20" [disabled]="true">Print</button>
-                          <button type="button" (click)="cancelEdits()" class="cancel btn btn-embossed btn-default m-b-10 m-r-0">Cancel</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="panel-content"> 
               <table class="table table-hover dataTable" id="table-editable">
                 <thead>
                   <tr>
-                    <th>Visit Id</th>
-                    <th>Date</th>
-                    <th>Patient</th>
                     <th>Doctor</th>
-                    <th class="text-right">Action</th>
-                    <th></th>
+                    <th>Date</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let value of values ">
-                    <td>{{value.visitId}}</td>
-                    <td>{{value.dateTimeStart}}</td>
-                    <td>{{value.patientFirstName}}</td>
-                    <td>{{value.doctorFirstName}}</td>
-                    <td class="text-right">
-                      <a class="edit btn btn-sm btn-default">
-                        <i class="icon-note" (click)="showEditForm(value)"></i>
+                    <td>{{value.firstName}}</td>
+                    <td>{{value.dateStart}}</td>
+                    <td>{{value.timeStart}}</td>
+                    <td>{{value.timeEnd}}</td>
+                    <td>{{value.status}}</td>
+                    <td class="text-left">
+                      <a class="btn btn-success" (click)="book(value)">
+                        <i class="icons-office-51"></i>
+                        Approve
                       </a>
                     </td>
                   </tr>

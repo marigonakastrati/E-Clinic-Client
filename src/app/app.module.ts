@@ -40,6 +40,9 @@ import { ACEditDoctorComponent } from './admin-clinic/doctor/edit/doctor.compone
 import { ACAddNurseComponent } from './admin-clinic/nurse/add/nurse.component';
 import { ACEditNurseComponent } from './admin-clinic/nurse/edit/nurse.component';
 import { NurseService } from './admin-clinic/nurse/nurse.service';
+import { ReceptionistProfileComponent } from './reception/profile/profile.component';
+import { ReceptionistProfileService } from './reception/profile/profile.service';
+import { ReceptioniAppointmentComponent } from './reception/appointment/appointment.component';
 
 
 
@@ -68,6 +71,8 @@ const appRouters: Routes = [
   { path: 'patient/appointment', component: PatientAppointmentComponent },
   { path: 'patient/prescription', component: PatientPrescriptionComponent },
   { path: 'patient/profile', component: PatientProfileComponent },
+  { path: 'reception/appointment', component: ReceptioniAppointmentComponent },
+  { path: 'reception/profile', component: ReceptionistProfileComponent },
 ];
 
 @NgModule({
@@ -95,7 +100,9 @@ const appRouters: Routes = [
     ACAddDoctorComponent,
     ACEditDoctorComponent,
     ACAddNurseComponent,
-    ACEditNurseComponent
+    ACEditNurseComponent,
+    ReceptionistProfileComponent,
+    ReceptioniAppointmentComponent,
 
   ],
   imports: [
@@ -105,7 +112,7 @@ const appRouters: Routes = [
     RouterModule.forRoot(appRouters)
   ],
   providers: [ReceptionService, LoginService, ProfileService, Global, ClinicManagerService, DoctorService, AdministratorService,
-    PatientProfileService,PatientService,NurseService,
+    PatientProfileService,PatientService,NurseService,ReceptionistProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,

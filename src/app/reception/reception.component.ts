@@ -30,8 +30,6 @@ export class ReceptionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initializeCountryList();
-
     /*this._http.get('http://localhost:26194/Eclinic/resource/address/addressList').
     toPromise().
     then(r => r.json()).
@@ -39,20 +37,9 @@ export class ReceptionComponent implements OnInit {
     this.username = localStorage.getItem("username");
   }
 
-  deleteCountry(value): void {
-    console.log(value)
-    this._receptionService.deleteReceptionist(value).subscribe
-      (
-      r => this.initializeCountryList()
-      );
-  }
+ 
 
-  addPost(name): void {
-    this._receptionService.postReception(name).subscribe
-      (
-      r => console.log(r)
-      );
-  }
+
   showEditCountryForm(country: Country) {
     if (!country) {
       this.countryForm = false;
@@ -71,24 +58,7 @@ export class ReceptionComponent implements OnInit {
     this.isNewForm = true;
   }
 
-  saveCountry(country: Country) {
-    if (this.isNewForm) {
-      this._receptionService.postReception(country.name).subscribe(
-        r => {
-          this.initializeCountryList();
-        }
-      );
-    }
-    this.countryForm = false;
-  }
 
-  updateCountry() {
-    this._receptionService.updateReceptionist(this.editedCountry).subscribe(
-      r =>this.initializeCountryList()
-    );
-    this.editCountryForm = false;
-    this.editedCountry = {};
-  }
 
   cancelNewCountry() {
     this.newCountry = {};
@@ -100,12 +70,4 @@ export class ReceptionComponent implements OnInit {
     this.editCountryForm = false;
   }
 
-  initializeCountryList() {
-    this._receptionService.getReceptionList().subscribe
-      (
-      data => {
-        this.values = data
-      }
-      )
-  }
 }

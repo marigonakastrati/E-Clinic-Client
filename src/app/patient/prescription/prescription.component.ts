@@ -116,49 +116,6 @@ export class PatientPrescriptionComponent implements OnInit {
       );
   }
 
-  initializeGenderList() {
-    /*this._clinicManagerService.getGenderList().subscribe
-      (
-      data => {
-        this.genderList = data
-      }
-      )*/
-  }
-  initializeMartialStatusList() {
-    console.log("called");
-    /* this._clinicManagerService.getMartialStatus().subscribe
-       (
-       data => {
-         this.martialStatusList = data;
-         console.log(data + " ms")
-       }
-       )*/
-  }
-  initializeBirthCityList() {
-    /*this._clinicManagerService.getBirthCity().subscribe
-      (
-      data => {
-        this.birthCityList = data;
-      }
-      )*/
-  }
-  initializeReligionList() {
-    /*this._clinicManagerService.getReligion().subscribe
-      (
-      data => {
-        this.religionList = data;
-      }
-      )*/
-  }
-
-  initializeCityList() {
-    /*this._clinicManagerService.getCity().subscribe
-      (
-      data => {
-        this.cityList = data;
-      }
-      )*/
-  }
   getProfile() {
     var id = localStorage.getItem('username');
     console.log(id + " profile")

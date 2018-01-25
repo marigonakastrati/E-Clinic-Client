@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientProfileService } from './profile.service';
-import { LoginService } from '../../login/login.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../login/login.service';
+import { ReceptionistProfileService } from './profile.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  providers: [PatientProfileService]
+  providers:[ReceptionistProfileService]
 })
-export class PatientProfileComponent implements OnInit {
+export class ReceptionistProfileComponent implements OnInit {
 
   currentProfile: any = {};
   patientProfile: any;
-  constructor(private _profileService: PatientProfileService, private _loginService: LoginService,
+  constructor(private _profileService: ReceptionistProfileService, private _loginService: LoginService,
     private router: Router) { }
 
     ngOnInit() {

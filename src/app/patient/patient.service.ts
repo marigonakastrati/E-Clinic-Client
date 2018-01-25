@@ -102,7 +102,7 @@ export class PatientService {
         patientId: value.patientId,
         dateBooked: dateBooked,
         timeBooked: timeBooked,
-        status: "Booked",
+        status: "Pending",
       },
       {
         responseType: 'text'
@@ -112,12 +112,12 @@ export class PatientService {
   getPrescibedMedicineList(id, visitId)
   {
     return this._http
-      .get<PrescriptionMedicine[]>(this._global.uriApi + 'prescription/find/'+1+"/"+visitId) 
+      .get<PrescriptionMedicine[]>(this._global.uriApi + 'prescription/find/'+id+"/"+visitId) 
   }
 
   getPrescriptionbyVisitList(id)
   {
     return this._http
-      .get<PatientPrescription[]>(this._global.uriApi + 'prescription/findByVisit/'+1) 
+      .get<PatientPrescription[]>(this._global.uriApi + 'prescription/findByVisit/'+id) 
   }
 }
