@@ -34,8 +34,8 @@ export class PatientAppointmentComponent implements OnInit {
 
   }
   book(value: Schedule) {
-    value.patientId = this.patientProfile.id;
-    this._patientService.book(value).subscribe(
+    var id = localStorage.getItem('username');
+    this._patientService.book(id, value).subscribe(
       r => this.initializeList()
     );
   }

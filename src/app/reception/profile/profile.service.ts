@@ -11,7 +11,7 @@ export class ReceptionistProfileService {
     constructor(private _http: HttpClient, private _global: Global, private _router: Router) { }
 
     getPersonDetails(id) {
-        return this._http.get<Receptionist[]>(this._global.uriApi + 'receptionist/find/' + id);
+        return this._http.get<Receptionist>(this._global.uriApi + 'receptionist/find/' + id);
     }
 
     updateEntityName(value: Receptionist) {

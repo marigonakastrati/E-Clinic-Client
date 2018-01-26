@@ -251,4 +251,8 @@ export class ACAddNurseComponent implements OnInit {
   getElementById(id) {
     return document.getElementById(id) as HTMLSelectElement;
   }
+  update(editedValue)
+  {
+
+  }
 }

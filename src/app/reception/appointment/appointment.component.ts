@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ReceptionistProfileService } from '../profile/profile.service';
 import { ReceptionService } from '../reception.service';
 import { Schedule } from '../../patient/schedule';
+import { Receptionist } from '../receptionist';
 
 @Component({
   selector: 'app-appointment',
@@ -12,9 +13,9 @@ import { Schedule } from '../../patient/schedule';
 })
 export class ReceptioniAppointmentComponent implements OnInit {
   values: Schedule[];
-  patientProfile: any;
+  receptionistProfile: Receptionist;
 
-  constructor(private _patientService: ReceptionService,
+  constructor(private _receptionistService: ReceptionService,
     private _profileService: ReceptionistProfileService, private _loginService: LoginService,
     private router: Router) { }
 
@@ -24,7 +25,7 @@ export class ReceptioniAppointmentComponent implements OnInit {
   }
 
   initializeList() {
-    this._patientService.getScheduleList().subscribe
+    this._receptionistService.getScheduleList().subscribe
       (
       data => {
         this.values = data
@@ -33,8 +34,7 @@ export class ReceptioniAppointmentComponent implements OnInit {
 
   }
   book(value: Schedule) {
-    value.patientId = this.patientProfile.id;
-    this._patientService.book(value).subscribe(
+    this._receptionistService.book(value).subscribe(
       r => this.initializeList()
     );
   }
@@ -42,7 +42,7 @@ export class ReceptioniAppointmentComponent implements OnInit {
     var id = localStorage.getItem('username');
     this._profileService.getPersonDetails(id).subscribe
       (
-      data => this.patientProfile = data
+      data => this.receptionistProfile = data
       )
   }
   logOut()

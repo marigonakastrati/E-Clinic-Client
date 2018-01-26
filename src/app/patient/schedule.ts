@@ -1,12 +1,14 @@
 export interface Schedule
 {
-    id:number;
+    scheduleId:number;
+    bookingAppointmentId:number;
     dateStart:string;
     dateEnd:string;
     timeStart:string;
     timeEnd:string;
     status:string;
-    firstName:string;
+    patientFirstName:string;
+    doctorFirstName:string;
     patientId:number
     
 }

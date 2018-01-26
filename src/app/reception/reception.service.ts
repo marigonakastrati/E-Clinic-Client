@@ -16,7 +16,7 @@ export class ReceptionService {
     constructor(private _http: HttpClient, private _global: Global, private _router: Router) { }
 
     getPersonDetails(id) {
-        return this._http.get<Receptionist[]>(this._global.uriApi + 'receptionist/find/' + id);
+        return this._http.get<Receptionist>(this._global.uriApi + 'receptionist/find/' + id);
     }
     navigateTo(location) {
         this._router.navigate([location]);
@@ -28,15 +28,10 @@ export class ReceptionService {
     }
     
     book(value: Schedule) {
-        var dateBooked = new Date().toISOString().slice(0, 10); //return YYYY-MM-DD
-        var timeBooked = new Date().toISOString()//return HH:mm
-        return this._http.post(this._global.uriApi + 'bookAppointment/create/',
+        return this._http.put(this._global.uriApi + 'schedule/updateSchedule/',
             {
-                scheduleId: value.id,
-                patientId: value.patientId,
-                dateBooked: dateBooked,
-                timeBooked: timeBooked,
-                status: "Booked",
+                scheduleId: value.scheduleId,
+                bookingAppointmentId: value.bookingAppointmentId,
             },
             {
                 responseType: 'text'

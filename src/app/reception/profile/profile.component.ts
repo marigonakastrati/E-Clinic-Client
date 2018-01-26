@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { ReceptionistProfileService } from './profile.service';
+import { Receptionist } from '../receptionist';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ import { ReceptionistProfileService } from './profile.service';
 export class ReceptionistProfileComponent implements OnInit {
 
   currentProfile: any = {};
-  patientProfile: any;
+  receptionistProfile: Receptionist;
   constructor(private _profileService: ReceptionistProfileService, private _loginService: LoginService,
     private router: Router) { }
 
@@ -96,7 +97,7 @@ export class ReceptionistProfileComponent implements OnInit {
       console.log(id)
       this._profileService.getPersonDetails(id).subscribe
         (
-        data => this.patientProfile = data
+        data => this.receptionistProfile = data
         )
     }
     getElementById(id) {

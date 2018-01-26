@@ -93,13 +93,14 @@ export class PatientService {
       });
   }
 
-  book(value: Schedule) {
+  book(id, value: Schedule) {
+    console.log(value.patientId+" sc id")
     var dateBooked = new Date().toISOString().slice(0,10); //return YYYY-MM-DD
     var timeBooked = new Date().toISOString()//return HH:mm
     return this._http.post(this._global.uriApi + 'bookAppointment/create/',
       {
-        scheduleId: value.id,
-        patientId: value.patientId,
+        scheduleId: value.scheduleId,
+        patientId: id,
         dateBooked: dateBooked,
         timeBooked: timeBooked,
         status: "Pending",

@@ -1,11 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import 'rxjs/add/operator/toPromise'
-import { forEach } from '@angular/router/src/utils/collection';
 import { ReceptionService } from './reception.service';
-import { NgModel } from '@angular/forms';
-import { Country } from './country';
-import { clone } from 'lodash';
+import { Receptionist } from './receptionist';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,58 +13,27 @@ import { clone } from 'lodash';
 })
 export class ReceptionComponent implements OnInit {
 
-  values: Country[];
-  countryForm: boolean = false;
-  editCountryForm: boolean = false;
-  isNewForm: boolean;
-  newCountry: any = {};
-  editedCountry: any = {};
-  private username: string;
-  private password: string;
+  receptionistProfile: Receptionist;
 
-  constructor(private _receptionService: ReceptionService) {
+
+  constructor(private _receptionService: ReceptionService,private _loginService: LoginService,
+    private router: Router) {
 
   }
 
   ngOnInit() {
-    /*this._http.get('http://localhost:26194/Eclinic/resource/address/addressList').
-    toPromise().
-    then(r => r.json()).
-    then(r=> this.values = r); */
-    this.username = localStorage.getItem("username");
+    this.getProfile();
+  }
+  getProfile() {
+    var id = localStorage.getItem('username');
+    this._receptionService.getPersonDetails(id).subscribe
+      (
+      data => this.receptionistProfile = data
+      )
   }
 
- 
-
-
-  showEditCountryForm(country: Country) {
-    if (!country) {
-      this.countryForm = false;
-      return;
-    }
-    this.editCountryForm = true;
-    this.editedCountry = clone(country);
+  logOut() {
+    this._loginService.logOut();
+    this.router.navigate(['login']);
   }
-
-  showAddCountryForm() {
-    // resets form if edited product
-    if (this.values.length) {
-      this.newCountry = {};
-    }
-    this.countryForm = true;
-    this.isNewForm = true;
-  }
-
-
-
-  cancelNewCountry() {
-    this.newCountry = {};
-    this.countryForm = false;
-  }
-
-  cancelEdits() {
-    this.editedCountry = {};
-    this.editCountryForm = false;
-  }
-
 }
