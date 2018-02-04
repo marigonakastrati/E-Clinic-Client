@@ -12,7 +12,7 @@ export class DoctorProfileComponent implements OnInit {
 
 
   currentProfile: any = {};
-  patientProfile: any;
+  doctorProfile: any;
   constructor(private _profileService: DoctorProfileService, private _loginService: LoginService,
     private router: Router) { }
 
@@ -38,7 +38,7 @@ export class DoctorProfileComponent implements OnInit {
   
     //update the profile. TODO send notification to UI with status using observable 
     saveProfile() {
-  
+  console.log(this.currentProfile.id+" sp doctor id")
       this._profileService.updateEntityName(this.currentProfile).subscribe(
         data => {
           this.initializeFields();
@@ -96,7 +96,7 @@ export class DoctorProfileComponent implements OnInit {
     console.log(id)
     this._profileService.getPersonDetails(id).subscribe
       (
-      data => this.patientProfile = data
+      data => this.doctorProfile = data
       )
   }
   getElementById(id) {

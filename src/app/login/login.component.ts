@@ -55,6 +55,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("role", '/reception');
           this.logedIn = true;
           console.log("loged on r");
+        }else if (r == "Patient") {
+          this.router.navigate(['/patient']);
+          localStorage.setItem("role", '/patient');
+          this.logedIn = true;
+          console.log("loged on r");
         }
       }
       );

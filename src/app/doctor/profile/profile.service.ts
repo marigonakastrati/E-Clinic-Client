@@ -13,25 +13,25 @@ export class DoctorProfileService {
     return this._http.get<Doctor[]>(this._global.uriApi + 'doctor/find/' + id);
   }
 
-  updateEntityName(value: Doctor) {
+  updateEntityName(value) {
     return this._http.put(this._global.uriApi + 'doctor/updateName',
         {
-           /* id: value.id,
+            id: value.id,
             firstName: value.firstname,
-            lastName: value.lastname*/
+            lastName: value.lastname
         },
         {
             responseType: 'text'
         }
     )
 }
-updateEntityPassword(value: Doctor) {
+updateEntityPassword(value) {
     return this._http.put(this._global.uriApi + 'doctor/updatePassword',
         {
-            /*id: value.id,
+            id: value.id,
             currentPassword: value.currentPassword,
             newPassword: value.newPassword,
-            confirmPassword: value.confirmPassword*/
+            confirmPassword: value.confirmPassword
         },
         {
             responseType: 'text'

@@ -40,9 +40,9 @@ export class DoctorService {
       })
   }
   updateBookingAppointment(value: Prescription) {
-    return this._http.put(this._global.uriApi + 'bookAppointment/updateStatus', {
-      value: value.bookingAppointmentId
-    },
+    return this._http.put(this._global.uriApi + 'bookAppointment/updateStatus', 
+      value.bookingAppointmentId
+    ,
       {
         responseType: 'text'
       }

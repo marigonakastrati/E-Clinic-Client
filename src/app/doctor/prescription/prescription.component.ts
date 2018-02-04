@@ -103,7 +103,10 @@ export class DoctorPrescriptionComponent implements OnInit {
       this._doctorService.updateBookingAppointment(this.presciptionMedicineList).subscribe(
         e => {
           //reload the bookingappointment list
-          this.loadMedicines();
+          console.log("reload appointment list");
+          this.appointmentList= [];
+          console.log(this.medicineList);
+          this.loadVisits();
         }
       )
 

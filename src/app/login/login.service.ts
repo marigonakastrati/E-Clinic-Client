@@ -8,8 +8,6 @@ export class LoginService {
   constructor(private _http: HttpClient, private _global: Global) {
 
   }
-
-
   checkCredentials() {
     let username = localStorage.getItem('username');
     let password = localStorage.getItem('password');
