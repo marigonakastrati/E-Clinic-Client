@@ -28,10 +28,16 @@ export class DoctorPrescriptionComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    //load profile
-    this.getProfile();
-    //load the list of bookings
-    this.loadVisits();
+    if (localStorage.getItem('role') != null) {
+      //load profile
+      this.getProfile();
+      //load the list of bookings
+      this.loadVisits();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
+
   }
 
   //bind the search medicine method, to update the medicine table 
@@ -104,7 +110,7 @@ export class DoctorPrescriptionComponent implements OnInit {
         e => {
           //reload the bookingappointment list
           console.log("reload appointment list");
-          this.appointmentList= [];
+          this.appointmentList = [];
           console.log(this.medicineList);
           this.loadVisits();
         }

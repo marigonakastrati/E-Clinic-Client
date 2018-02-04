@@ -20,8 +20,14 @@ export class ReceptioniAppointmentComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.initializeList();
-    this.getProfile();
+
+    if (localStorage.getItem('role') != null) {
+      this.initializeList();
+      this.getProfile();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
   }
 
   initializeList() {

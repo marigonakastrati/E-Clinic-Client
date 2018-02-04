@@ -3,6 +3,7 @@ import { ReceptionService } from './reception.service';
 import { Receptionist } from './receptionist';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { ProfileService } from '../admin-clinic/profile/profile.service';
 
 
 @Component({
@@ -17,12 +18,17 @@ export class ReceptionComponent implements OnInit {
 
 
   constructor(private _receptionService: ReceptionService,private _loginService: LoginService,
-    private router: Router) {
+    private router: Router, private _profileService: ProfileService) {
 
   }
 
   ngOnInit() {
-    this.getProfile();
+    if (localStorage.getItem('role') != null) {
+      this.getProfile();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
   }
   getProfile() {
     var id = localStorage.getItem('username');

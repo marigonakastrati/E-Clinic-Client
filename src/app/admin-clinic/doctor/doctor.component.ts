@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from './doctor.service';
 import { Doctor } from './doctor';
 import { clone } from 'lodash';
+import { ProfileService } from '../profile/profile.service';
 
 @Component({
   selector: 'app-doctor',
@@ -19,13 +20,18 @@ export class ACDoctorComponent implements OnInit {
   newValue: any = {};
   editedValue: any = {};
 
-  constructor(private _doctorService: DoctorService) { }
+  constructor(private _doctorService: DoctorService, private _profileService: ProfileService) { }
 
   ngOnInit() {
-    this.initializeList();
+    if (localStorage.getItem('role') != null) {
+      this.initializeList();
+
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
+  
   }
-
-
   addPost(name): void {
     this._doctorService.create(name).subscribe
       (

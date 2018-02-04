@@ -38,14 +38,18 @@ export class ACAddClinicManagerComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getProfile();
-    this.initializeGenderList();
-    this.initializeMartialStatusList();
-    this.initializeBirthCityList();
-    this.initializeReligionList();
-    this.initializeCityList();
-    this.initializeCountryList();
-
+    if (localStorage.getItem('role') != null) {
+      this.getProfile();
+      this.initializeGenderList();
+      this.initializeMartialStatusList();
+      this.initializeBirthCityList();
+      this.initializeReligionList();
+      this.initializeCityList();
+      this.initializeCountryList();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
   }
   addPost(name): void {
     this._clinicManagerService.create(name).subscribe
@@ -97,11 +101,11 @@ export class ACAddClinicManagerComponent implements OnInit {
         r => this.initializeList()
       );
       let divMessage = this.getElementById("saveMessage");
-    divMessage.removeAttribute('hidden');
-    //fade the message away after 10 seconds
-    setTimeout(function () {
-      divMessage.setAttribute("hidden", "true");
-    }, 5000);
+      divMessage.removeAttribute('hidden');
+      //fade the message away after 10 seconds
+      setTimeout(function () {
+        divMessage.setAttribute("hidden", "true");
+      }, 5000);
       this.editedValue = {};
     }
   }

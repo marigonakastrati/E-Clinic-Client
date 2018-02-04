@@ -37,9 +37,13 @@ export class ACEditClinicManagerComponent implements OnInit {
 
   ngOnInit() {
 
-    this.initializeList();
-    this.getProfile();
-
+    if (localStorage.getItem('role') != null) {
+      this.initializeList();
+      this.getProfile();
+    } else {
+      //If user is not logged in redirect to login page
+      this._profileService.navigateTo('/login');
+    }
   }
   addPost(name): void {
     this._clinicManagerService.create(name).subscribe

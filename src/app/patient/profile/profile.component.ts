@@ -20,11 +20,11 @@ export class PatientProfileComponent implements OnInit {
 
       if (localStorage.getItem('role') != null) {
         this.initializeFields();
+        this.getProfile();
       } else {
         //If user is not logged in redirect to login page
         this._profileService.navigateTo('/login');
       }
-      this.getProfile();
     }
   
     initializeFields() {
