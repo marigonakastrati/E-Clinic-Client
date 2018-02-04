@@ -6,7 +6,7 @@ import { Observable } from "rxjs/Observable";
 export class ClinicHttpInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        let vSession = localStorage.getItem('role');//sessionId
+        let vSession = localStorage.getItem('sessionId');//sessionId
         const reqHeader = req.clone({ headers: req.headers.set('Authorization', vSession+'') });
         console.log(reqHeader.headers)
         return next.handle(reqHeader);
