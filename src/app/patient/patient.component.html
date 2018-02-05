@@ -1,0 +1,144 @@
+<section>
+  <!-- BEGIN SIDEBAR -->
+  <div class="sidebar">
+    <div class="logopanel">
+      <h1>
+        <a href="patient/"></a>
+      </h1>
+    </div>
+    <div class="sidebar-inner">
+      <ul class="nav nav-sidebar">
+        <li>
+          <a href="patient/">
+            <i class="icon-home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-parent ">
+          <a >
+            <i class="icon-bulb"></i>
+            <span>Appointment</span>
+          </a>
+          <ul class="children collapse">
+            <li >
+              <a href="patient/appointment/"> Book</a>
+            </li> 
+          </ul>
+        </li>
+        <li class="nav-parent ">
+          <a>
+            <i class="icon-screen-desktop"></i>
+            <span>Prescription</span>
+          </a>
+          <ul class="children collapse">
+            <li >
+              <a href="patient/prescription/"> View</a>
+            </li> 
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END SIDEBAR -->
+  <div class="main-content">
+    <!-- BEGIN TOPBAR -->
+    <div class="topbar">
+      <div class="header-left">
+        <div class="topnav">
+          <a class="menutoggle" href="#" data-toggle="sidebar-collapsed">
+            <span class="menu__handle">
+              <span>Menu</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="header-right">
+        <ul class="header-menu nav navbar-nav">
+          <!-- BEGIN USER DROPDOWN -->
+          <li class="dropdown" id="language-header">
+            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+              <i class="icon-globe"></i>
+              <span>Language</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a data-lang="en">
+                  <img src="../../../assets/global/images/flags/usa.png" alt="flag-english">
+                  <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a data-lang="fr">
+                  <img src="../../../assets/global/images/flags/french.png" alt="flag-english">
+                  <span>Français</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- END USER DROPDOWN -->
+
+          <!-- BEGIN USER DROPDOWN -->
+          <li class="dropdown" id="user-header">
+            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+              <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
+              <span class="username">{{patientProfile.firstname}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="patient/profile">
+                  <i class="icon-user"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="logOut()">
+                  <i class="icon-logout"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- END USER DROPDOWN -->
+        </ul>
+      </div>
+      <!-- header-right -->
+    </div>
+    <!-- END TOPBAR -->
+    <!-- BEGIN PAGE CONTENT -->
+    <div class="page-content">
+    
+      
+      <div class="footer">
+        <div class="copyright">
+          <p class="pull-left sm-pull-reset">
+            <span>Copyright
+              <span class="copyright">©</span> 2018 </span>
+            <span>Owner</span>.
+            <span>All rights reserved. </span>
+          </p>
+          <p class="pull-right sm-pull-reset">
+            <span>
+              <a href="#" class="m-r-10"></a>
+              <a href="#" class="m-l-10 m-r-10"></a>
+              <a href="#" class="m-l-10"></a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+  </div>
+  <!-- END MAIN CONTENT -->
+</section>
+<!-- BEGIN PRELOADER -->
+<div class="loader-overlay">
+  <div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+<!-- END PRELOADER -->
+<a href="#" class="scrollup">
+  <i class="fa fa-angle-up"></i>
+</a>

@@ -1,0 +1,275 @@
+<section>
+  <!-- BEGIN SIDEBAR -->
+  <div class="sidebar">
+    <div class="logopanel">
+      <h1>
+        <a href="doctor/"></a>
+      </h1>
+    </div>
+    <div class="sidebar-inner">
+      <ul class="nav nav-sidebar">
+        <li>
+          <a href="doctor/">
+            <i class="icon-home"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-parent nav-active active ">
+          <a>
+            <i class="icon-screen-desktop"></i>
+            <span>Prescription</span>
+          </a>
+          <ul class="children collapse">
+            <li class="active">
+              <a href="doctor/prescription/"> View</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- END SIDEBAR -->
+  <div class="main-content">
+    <!-- BEGIN TOPBAR -->
+    <div class="topbar">
+      <div class="header-left">
+        <div class="topnav">
+          <a class="menutoggle" href="#" data-toggle="sidebar-collapsed">
+            <span class="menu__handle">
+              <span>Menu</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      <div class="header-right">
+        <ul class="header-menu nav navbar-nav">
+          <!-- BEGIN USER DROPDOWN -->
+          <li class="dropdown" id="language-header">
+            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+              <i class="icon-globe"></i>
+              <span>Language</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a data-lang="en">
+                  <img src="../../../assets/global/images/flags/usa.png" alt="flag-english">
+                  <span>English</span>
+                </a>
+              </li>
+              <li>
+                <a data-lang="fr">
+                  <img src="../../../assets/global/images/flags/french.png" alt="flag-english">
+                  <span>Français</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- END USER DROPDOWN -->
+
+          <!-- BEGIN USER DROPDOWN -->
+          <li class="dropdown" id="user-header">
+            <a href="#" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+              <img src="../../../assets/global/images/avatars/user1.png" alt="user image">
+              <span class="username">{{doctorProfile.firstname}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="doctor/profile">
+                  <i class="icon-user"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <a (click)="logOut()">
+                  <i class="icon-logout"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- END USER DROPDOWN -->
+        </ul>
+      </div>
+      <!-- header-right -->
+    </div>
+    <!-- END TOPBAR -->
+    <!-- BEGIN PAGE CONTENT -->
+    <div class="page-content">
+      <div class="header">
+        <h2>View
+          <strong>Prescription</strong>
+        </h2>
+        <div class="breadcrumb-wrapper">
+          <ol class="breadcrumb">
+            <li>
+              <a href="/doctor">Home</a>
+            </li>
+            <li>
+              <a href="/doctor/prescription">Prescription</a>
+            </li>
+            <li class="active">View</li>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 portlets">
+          <div class="panel">
+            <div class="panel-header panel-controls">
+              <h3>
+                <i class="fa fa-table"></i>
+                <strong>Prescription</strong></h3>
+            </div>
+            <div class="panel-content" >
+              <div class="col-md-6" >
+                <div class="row" *ngIf="addPrescriptionForm">
+                  <!--<label>Search:
+                    <input type="search" class="form-control input-sm" name="search" (keyup)="fetchMedicines(searchMedicine)" [(ngModel)]="searchMedicine">
+                  </label>-->
+                  <div id="fieldsError" hidden>
+                    <small style="color:red; display:block"> Fill out the fields</small>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <table class="table table-hover dataTable" id="table-editable">
+                      <thead>
+                        <tr>
+                          <th>Description</th>
+                          <th>Days to use</th>
+                          <th>Times per day</th>
+                          <th>Medicine name</th>
+                          <th>Medicine weight</th>
+                          <th>Add Medicine</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let medicine of medicineList ">
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="medicine.description">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="medicine.daysToUse">
+                          </td>
+                          <td>
+                            <input type="text" class="form-control" [(ngModel)]="medicine.timesPerday">
+                          </td>
+                          <td>{{medicine.medicineName}}</td>
+                          <td>{{medicine.medicineWeight}}</td>
+                          <td class="text-left">
+                            <a class="edit btn btn-sm btn-default">
+                              <i class="icon-note" (click)="addMedicine(medicine)"></i>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" *ngIf="addPrescriptionForm">
+                <!--*ngIf="editForm"-->
+                <div class="panel panel-default no-bd">
+                  <div class="panel-header bg-dark">
+                    <h2 class="panel-title">
+                      <strong>Prescription</strong></h2>
+                  </div>
+                  <div class="panel-content bg-white">
+                    <div class="row">
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <table class="table table-hover dataTable" id="table-editable">
+                          <thead>
+                            <tr>
+                              <th>Description</th>
+                              <th>Days to use</th>
+                              <th>Times per day</th>
+                              <th>Medicine name</th>
+                              <th>Medicine weight</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let value of presciptionMedicineList.medicines ">
+                              <td>{{value.description}}</td>
+                              <td>{{value.daysToUse}}</td>
+                              <td>{{value.timesPerday}}</td>
+                              <td>{{value.medicineName}}</td>
+                              <td>{{value.medicineWeight}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="form-group">
+                          <label for="comment">Diagnoses:</label>
+                          <textarea class="form-control" rows="5" id="comment" [(ngModel)]="presciptionMedicineList.diagnoses"></textarea>
+                        </div>
+                        <div class="text-center  m-t-20">
+                            <div id="prescriptionError" hidden>
+                                <small style="color:red; display:block"> Fill out the fields</small>
+                              </div>
+                          <button type="button" (click)="addPrescription()" class="btn btn-embossed btn-primary m-r-20" [disabled]="false">Add</button>
+                          <button type="button" (click)="cancelAddPrescription()" class="cancel btn btn-embossed btn-default m-b-10 m-r-0">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <table class="table table-hover dataTable" id="table-editable">
+                <thead>
+                  <tr>
+                    <th>Patient</th>
+                    <th>Date</th>
+                    <th>Time Start</th>
+                    <th>Time End</th>
+                    <th class="text-right">Action</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let appointment of appointmentList ">
+                    <td>{{appointment.patientName}}</td>
+                    <td>{{appointment.dateStart}}</td>
+                    <td>{{appointment.timeStart}}</td>
+                    <td>{{appointment.timeEnd}}</td>
+                    <td class="text-right">
+                      <a class="edit btn btn-sm btn-default">
+                        <i class="icon-note" (click)="showAddPrescription(appointment)"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="copyright">
+          <p class="pull-left sm-pull-reset">
+            <span>Copyright
+              <span class="copyright">©</span> 2018 </span>
+            <span>Owner</span>.
+            <span>All rights reserved. </span>
+          </p>
+          <p class="pull-right sm-pull-reset">
+            <span>
+              <a href="#" class="m-r-10"></a>
+              <a href="#" class="m-l-10 m-r-10"></a>
+              <a href="#" class="m-l-10"></a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- END PAGE CONTENT -->
+  </div>
+  <!-- END MAIN CONTENT -->
+</section>
+<!-- BEGIN PRELOADER -->
+<div class="loader-overlay">
+  <div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+<!-- END PRELOADER -->
+<a href="#" class="scrollup">
+  <i class="fa fa-angle-up"></i>
+</a>

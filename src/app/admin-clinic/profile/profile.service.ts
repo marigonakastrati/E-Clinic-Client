@@ -16,7 +16,7 @@ export class ProfileService {
 
 
     updateAdminClinicName(adminClinic: AdminClinic) {
-        return this._http.put(this._global.uriApi + 'adminClinic/updateName/',
+        return this._http.put(this._global.uriApi + 'adminClinic/updateName',
             {
                 id: adminClinic.id,
                 firstName: adminClinic.firstname,
@@ -28,7 +28,7 @@ export class ProfileService {
         )
     }
     updateAdminClinicPassword(adminClinic: AdminClinic) {
-        return this._http.put(this._global.uriApi + 'adminClinic/updatePassword/',
+        return this._http.put(this._global.uriApi + 'adminClinic/updatePassword',
             {
                 id: adminClinic.id,
                 currentPassword: adminClinic.currentPassword,

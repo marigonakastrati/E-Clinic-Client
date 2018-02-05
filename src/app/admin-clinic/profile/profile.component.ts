@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './profile.service';
+import { LoginService } from '../../login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,16 +11,20 @@ import { ProfileService } from './profile.service';
 export class ACProfileComponent implements OnInit {
 
   currentProfile: any = {};
+  adminClinicProfile: any;
 
-  constructor(private _profileService: ProfileService) { }
+  constructor(private _profileService: ProfileService, private _loginService:LoginService,
+    private router: Router) { }
 
   ngOnInit() {
+
     if (localStorage.getItem('role') != null) {
       this.initializeFields();
     } else {
       //If user is not logged in redirect to login page
       this._profileService.navigateTo('/login');
     }
+    this.getProfile();
   }
 
   initializeFields() {
@@ -31,44 +37,68 @@ export class ACProfileComponent implements OnInit {
   }
 
   //update the profile. TODO send notification to UI with status using observable 
-  saveProfile(currentProfile) {
-    this._profileService.updateAdminClinicName(currentProfile).subscribe(
+  saveProfile() {
+
+    this._profileService.updateAdminClinicName(this.currentProfile).subscribe(
       data => {
         this.initializeFields();
-        let divMessage = document.getElementsByClassName('message')[0];
-        if (document.getElementsByTagName('h2')[0] != null) {
-          divMessage.removeChild(document.getElementsByTagName('h2')[0]);
-        }
-        let h1Message = document.createElement('h2');
-        //handle the exceptions
-        h1Message.innerText = data;
-        divMessage.appendChild(h1Message);
-        //fade the message after 10 seconds
-        setTimeout(function () {
-          divMessage.removeChild(h1Message);
-        }, 5000);
-      })
+      });
+
+    if (!this.validatePassword()) {
+      this._profileService.updateAdminClinicPassword(this.currentProfile).subscribe(
+        data => {
+          console.log("password edit");
+          this.initializeFields();
+        })
+    }
+    let divMessage = this.getElementById("saveMessage");
+    divMessage.removeAttribute('hidden');
+    //fade the message away after 10 seconds
+    setTimeout(function () {
+      divMessage.setAttribute("hidden", "true");
+    }, 5000);
 
   }
 
-  //TODO send notification to UI with status using observable, clear the fields
-  savePassword(currentProfile) {
-    this._profileService.updateAdminClinicPassword(currentProfile).subscribe(
-      data => {
-        this.initializeFields();
-        let divMessage = document.getElementsByClassName('message')[0];
-        if (document.getElementsByTagName('h2')[0] != null) {
-          divMessage.removeChild(document.getElementsByTagName('h2')[0]);
-        }
-        let h1Message = document.createElement('h2');
-        //handle the exceptions
-        h1Message.innerText = data;
-        divMessage.appendChild(h1Message);
-        //fade the message after 10 seconds
-        setTimeout(function () {
-          divMessage.removeChild(h1Message);
-        }, 5000);
-      }
-    )
+  cancelEdits() {
+    this.currentProfile.newPassword = "";
+    this.currentProfile.confirmPassword = "";
+    this.currentProfile.currentPassword = "";
+  }
+
+  validatePassword() {
+    this.getElementById("newPasswordError").setAttribute("hidden", "true");
+    this.getElementById("confirmPasswordError").setAttribute("hidden", "true");
+    var validationFailed = false;
+    if (this.currentProfile.newPassword == null && this.currentProfile.confirmPassword == null
+      && this.currentProfile.currentPassword == null) {
+      return true;
+    }
+    if (this.currentProfile.currentPassword != null && (this.currentProfile.newPassword != this.currentProfile.confirmPassword)) {
+      validationFailed = true;
+      this.getElementById("newPasswordError").removeAttribute('hidden');
+      this.getElementById("confirmPasswordError").removeAttribute('hidden');
+    }
+    if (this.currentProfile.newPassword == null ||  this.currentProfile.confirmPassword == null) {
+      validationFailed = true;
+      this.getElementById("newPasswordError").removeAttribute('hidden');
+      this.getElementById("confirmPasswordError").removeAttribute('hidden');
+    }
+  }
+  getProfile() {
+    var id = localStorage.getItem('username');
+    console.log(id)
+    this._profileService.getPersonDetails(id).subscribe
+      (
+      data => this.adminClinicProfile = data
+      )
+  }
+  getElementById(id) {
+    return document.getElementById(id) as HTMLSelectElement;
+  }
+  logOut()
+  {
+    this._loginService.logOut();
+    this.router.navigate(['login']);
   }
 }

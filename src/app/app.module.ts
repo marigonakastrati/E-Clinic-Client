@@ -25,9 +25,28 @@ import { ACHRManagerComponent } from './admin-clinic/hr-manager/hr-manager.compo
 import { ACNurseComponent } from './admin-clinic/nurse/nurse.component';
 import { ACReceptionComponent } from './admin-clinic/reception/reception.component';
 import { ProfileService } from './admin-clinic/profile/profile.service';
-import {Global} from './global';
+import { Global } from './global';
 import { ClinicManagerService } from './admin-clinic/clinic-manager/clinic-manager.service';
 import { DoctorService } from './admin-clinic/doctor/doctor.service';
+import { AdministratorService } from './admin-clinic/administrator.service';
+import { PatientComponent } from './patient/patient.component';
+import { PatientAppointmentComponent } from './patient/appointment/appointment.component';
+import { PatientPrescriptionComponent } from './patient/prescription/prescription.component';
+import { PatientProfileComponent } from './patient/profile/profile.component';
+import { PatientProfileService } from './patient/profile/profile.service';
+import { PatientService } from './patient/patient.service';
+import { ACAddDoctorComponent } from './admin-clinic/doctor/add/doctor.component';
+import { ACEditDoctorComponent } from './admin-clinic/doctor/edit/doctor.component';
+import { ACAddNurseComponent } from './admin-clinic/nurse/add/nurse.component';
+import { ACEditNurseComponent } from './admin-clinic/nurse/edit/nurse.component';
+import { NurseService } from './admin-clinic/nurse/nurse.service';
+import { ReceptionistProfileComponent } from './reception/profile/profile.component';
+import { ReceptionistProfileService } from './reception/profile/profile.service';
+import { ReceptioniAppointmentComponent } from './reception/appointment/appointment.component';
+import { DoctorPrescriptionComponent } from './doctor/prescription/prescription.component';
+import { DoctorProfileComponent } from './doctor/profile/profile.component';
+import { DoctorProfileService } from './doctor/profile/profile.service';
+
 
 
 const appRouters: Routes = [
@@ -38,15 +57,27 @@ const appRouters: Routes = [
   { path: 'doctor', component: DoctorComponent },
   { path: 'hrManager', component: ClinicManagerComponent },
   { path: 'nurse', component: NurseComponent },
+  { path: 'patient', component: PatientComponent },
   { path: 'adminClinic/profile', component: ACProfileComponent },
   { path: 'adminClinic/clinicmanager/edit', component: ACEditClinicManagerComponent },
   { path: 'adminClinic/clinicmanager/add', component: ACAddClinicManagerComponent },
   { path: 'adminClinic/doctor', component: ACDoctorComponent },
+  { path: 'adminClinic/doctor/add', component: ACAddDoctorComponent },
+  { path: 'adminClinic/doctor/edit', component: ACEditDoctorComponent },
   { path: 'adminClinic/nurse', component: ACNurseComponent },
+  { path: 'adminClinic/nurse/add', component: ACAddNurseComponent },
+  { path: 'adminClinic/nurse/edit', component: ACEditNurseComponent },
   { path: 'adminClinic/hrManager', component: ACHRManagerComponent },
   { path: 'adminClinic/pharmacist', component: ACPharmacistComponent },
   { path: 'adminClinic/pharmacyManager', component: ACPharmacyManagerComponent },
-  { path: 'adminClinic/receptionist', component: ACReceptionComponent }
+  { path: 'adminClinic/receptionist', component: ACReceptionComponent },
+  { path: 'patient/appointment', component: PatientAppointmentComponent },
+  { path: 'patient/prescription', component: PatientPrescriptionComponent },
+  { path: 'patient/profile', component: PatientProfileComponent },
+  { path: 'reception/appointment', component: ReceptioniAppointmentComponent },
+  { path: 'reception/profile', component: ReceptionistProfileComponent },
+  { path: 'doctor/prescription', component: DoctorPrescriptionComponent },
+  { path: 'doctor/profile', component: DoctorProfileComponent },
 ];
 
 @NgModule({
@@ -66,7 +97,20 @@ const appRouters: Routes = [
     ACDoctorComponent,
     ACHRManagerComponent,
     ACNurseComponent,
-    ACReceptionComponent
+    ACReceptionComponent,
+    PatientAppointmentComponent,
+    PatientPrescriptionComponent,
+    PatientProfileComponent,
+    PatientComponent,
+    ACAddDoctorComponent,
+    ACEditDoctorComponent,
+    ACAddNurseComponent,
+    ACEditNurseComponent,
+    ReceptionistProfileComponent,
+    ReceptioniAppointmentComponent,
+    DoctorPrescriptionComponent,
+    DoctorProfileComponent,
+
   ],
   imports: [
     HttpClientModule,
@@ -74,7 +118,8 @@ const appRouters: Routes = [
     FormsModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [ReceptionService, LoginService,ProfileService,Global,ClinicManagerService,DoctorService,
+  providers: [ReceptionService, LoginService, ProfileService, Global, ClinicManagerService, DoctorService, AdministratorService,
+    PatientProfileService,PatientService,NurseService,ReceptionistProfileService,DoctorProfileService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ClinicHttpInterceptor,

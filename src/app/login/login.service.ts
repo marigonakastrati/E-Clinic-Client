@@ -8,11 +8,7 @@ export class LoginService {
   constructor(private _http: HttpClient, private _global: Global) {
 
   }
-
-
-  checkCredentials() {
-    let username = localStorage.getItem('username');
-    let password = localStorage.getItem('password');
+  checkCredentials(username, password) {
     return this._http.post(this._global.uriApi + 'login/auth',
       {
         userName: username,
@@ -24,7 +20,7 @@ export class LoginService {
   }
   logOut() {
     localStorage.removeItem('username');
-    localStorage.removeItem('password');
+    localStorage.removeItem('sessionId');
     localStorage.removeItem('role');
   }
 }
