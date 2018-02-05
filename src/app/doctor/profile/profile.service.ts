@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AdminClinic } from './adminClinic';
+import { Doctor } from './doctor';
 import { Global } from '../../global';
 import { Router } from '@angular/router';
 
@@ -11,29 +11,29 @@ export class ProfileService {
 
 
     getPersonDetails(id) {
-        return this._http.get<AdminClinic[]>(this._global.uriApi + 'adminClinic/find/' + id);
+        return this._http.get<Doctor[]>(this._global.uriApi + 'doctor/find/' + id);
     }
 
 
-    updateAdminClinicName(adminClinic: AdminClinic) {
-        return this._http.put(this._global.uriApi + 'adminClinic/updateName/',
+    updateAdminClinicName(doctor: Doctor) {
+        return this._http.put(this._global.uriApi + 'doctor/updateName/',
             {
-                id: adminClinic.id,
-                firstName: adminClinic.firstname,
-                lastName: adminClinic.lastname
+                id: doctor.id,
+                firstName: doctor.firstname,
+                lastName: doctor.lastname
             },
             {
                 responseType: 'text'
             }
         )
     }
-    updateAdminClinicPassword(adminClinic: AdminClinic) {
-        return this._http.put(this._global.uriApi + 'adminClinic/updatePassword/',
+    updateAdminClinicPassword(doctor: Doctor) {
+        return this._http.put(this._global.uriApi + 'doctor/updatePassword/',
             {
-                id: adminClinic.id,
-                currentPassword: adminClinic.currentPassword,
-                newPassword: adminClinic.newPassword,
-                confirmPassword: adminClinic.confirmPassword
+                id: doctor.id,
+                currentPassword: doctor.currentPassword,
+                newPassword: doctor.newPassword,
+                confirmPassword: doctor.confirmPassword
             },
             {
                 responseType: 'text'
